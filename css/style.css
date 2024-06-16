@@ -1,3 +1,4 @@
+/* Estilos gerais para o corpo do documento */
 body {
   font-family: Arial, sans-serif;
   background-color: #f8f8f8;
@@ -5,6 +6,7 @@ body {
   padding: 0;
 }
 
+/* Estilos para a barra de navegação */
 nav {
   background-color: #333;
   padding: 10px;
@@ -25,10 +27,12 @@ nav ul li a {
   text-decoration: none;
 }
 
+/* Estilos para o conteúdo principal */
 main {
   padding: 20px;
 }
 
+/* Estilos para formulários */
 form {
   background-color: #fff;
   padding: 20px;
@@ -70,10 +74,8 @@ form button:hover {
   background-color: #0056b3;
 }
 
-#userList,
-#residentList,
-#quartosList,
-#contasList {
+/* Estilos para listas de itens */
+.list-container {
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
@@ -81,17 +83,11 @@ form button:hover {
   margin-bottom: 20px;
 }
 
-#userList p,
-#residentList p,
-#quartosList p,
-#contasList p {
+.list-container p {
   margin-bottom: 10px;
 }
 
-#userList button,
-#residentList button,
-#quartosList button,
-#contasList button {
+.list-container button {
   background-color: #dc3545;
   color: #fff;
   border: none;
@@ -101,9 +97,37 @@ form button:hover {
   transition: background-color 0.3s ease;
 }
 
-#userList button:hover,
-#residentList button:hover,
-#quartosList button:hover,
-#contasList button:hover {
+.list-container button:hover {
+  background-color: #c82333;
+}
+
+/* Estilos específicos para listas de quartos e contas */
+#roomList,
+#accountList {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+#roomList p,
+#accountList p {
+  margin-bottom: 10px;
+}
+
+#roomList button,
+#accountList button {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#roomList button:hover,
+#accountList button:hover {
   background-color: #c82333;
 }
