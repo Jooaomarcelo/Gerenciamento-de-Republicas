@@ -1,193 +1,230 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Gerenciar Usuários
-  const userForm = document.getElementById('userForm');
-  const userList = document.getElementById('userList');
-  const users = [];
+    // Gerenciar Usuários
+    const userForm = document.getElementById('userForm');
+    const userList = document.getElementById('userList');
+    const users = [];
 
-  if (userForm) {
-    userForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const name = event.target.name.value;
-      const cpf = event.target.cpf.value;
-      const rg = event.target.rg.value;
-      const profile = event.target.profile.value;
+    if (userForm) {
+        userForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const name = event.target.name.value;
+            const cpf = event.target.cpf.value;
+            const rg = event.target.rg.value;
+            const profile = event.target.profile.value;
 
-      const user = { name, cpf, rg, profile };
-      users.push(user);
-      event.target.reset();
-      displayUsers();
-    });
-  }
+            const user = { name, cpf, rg, profile };
+            users.push(user);
+            event.target.reset();
+            displayUsers();
+        });
+    }
 
-  const displayUsers = () => {
-    userList.innerHTML = '';
-    users.forEach((user, index) => {
-      const userItem = document.createElement('div');
-      userItem.innerHTML = `
-        <p>${user.name} - ${user.cpf}</p>
-        <button onclick="editUser(${index})">Editar</button>
-        <button onclick="removeUser(${index})">Remover</button>
-      `;
-      userList.appendChild(userItem);
-    });
-  };
+    const displayUsers = () => {
+        userList.innerHTML = '';
+        users.forEach((user, index) => {
+            const userItem = document.createElement('div');
+            userItem.innerHTML = `
+                <p>${user.name} - ${user.cpf}</p>
+                <button onclick="editUser(${index})">Editar</button>
+                <button onclick="removeUser(${index})">Remover</button>
+            `;
+            userList.appendChild(userItem);
+        });
+    };
 
-  window.editUser = (index) => {
-    const user = users[index];
-    userForm.name.value = user.name;
-    userForm.cpf.value = user.cpf;
-    userForm.rg.value = user.rg;
-    userForm.profile.value = user.profile;
-    users.splice(index, 1);
-    displayUsers();
-  };
+    window.editUser = (index) => {
+        const user = users[index];
+        userForm.name.value = user.name;
+        userForm.cpf.value = user.cpf;
+        userForm.rg.value = user.rg;
+        userForm.profile.value = user.profile;
+        users.splice(index, 1);
+        displayUsers();
+    };
 
-  window.removeUser = (index) => {
-    users.splice(index, 1);
-    displayUsers();
-  };
+    window.removeUser = (index) => {
+        users.splice(index, 1);
+        displayUsers();
+    };
 
-  // Gerenciar Moradores
-  const residentForm = document.getElementById('residentForm');
-  const residentList = document.getElementById('residentList');
-  const residents = [];
+    // Gerenciar Moradores
+    const residentForm = document.getElementById('residentForm');
+    const residentList = document.getElementById('residentList');
+    const residents = [];
 
-  if (residentForm) {
-    residentForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const name = event.target.name.value;
-      const cpf = event.target.cpf.value;
-      const year = event.target.year.value;
-      const room = event.target.room.value;
-      const responsible = event.target.responsible.value;
-      const state = event.target.state.value;
+    if (residentForm) {
+        residentForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const name = event.target.name.value;
+            const cpf = event.target.cpf.value;
+            const year = event.target.year.value;
+            const room = event.target.room.value;
+            const responsible = event.target.responsible.value;
+            const state = event.target.state.value;
 
-      const resident = { name, cpf, year, room, responsible, state };
-      residents.push(resident);
-      event.target.reset();
-      displayResidents();
-    });
-  }
+            const resident = { name, cpf, year, room, responsible, state };
+            residents.push(resident);
+            event.target.reset();
+            displayResidents();
+        });
+    }
 
-  const displayResidents = () => {
-    residentList.innerHTML = '';
-    residents.forEach((resident, index) => {
-      const residentItem = document.createElement('div');
-      residentItem.innerHTML = `
-        <p>${resident.name} - ${resident.cpf}</p>
-        <button onclick="editResident(${index})">Editar</button>
-        <button onclick="removeResident(${index})">Remover</button>
-      `;
-      residentList.appendChild(residentItem);
-    });
-  };
+    const displayResidents = () => {
+        residentList.innerHTML = '';
+        residents.forEach((resident, index) => {
+            const residentItem = document.createElement('div');
+            residentItem.innerHTML = `
+                <p>${resident.name} - ${resident.cpf}</p>
+                <button onclick="editResident(${index})">Editar</button>
+                <button onclick="removeResident(${index})">Remover</button>
+            `;
+            residentList.appendChild(residentItem);
+        });
+    };
 
-  window.editResident = (index) => {
-    const resident = residents[index];
-    residentForm.name.value = resident.name;
-    residentForm.cpf.value = resident.cpf;
-    residentForm.year.value = resident.year;
-    residentForm.room.value = resident.room;
-    residentForm.responsible.value = resident.responsible;
-    residentForm.state.value = resident.state;
-    residents.splice(index, 1);
-    displayResidents();
-  };
+    window.editResident = (index) => {
+        const resident = residents[index];
+        residentForm.name.value = resident.name;
+        residentForm.cpf.value = resident.cpf;
+        residentForm.year.value = resident.year;
+        residentForm.room.value = resident.room;
+        residentForm.responsible.value = resident.responsible;
+        residentForm.state.value = resident.state;
+        residents.splice(index, 1);
+        displayResidents();
+    };
 
-  window.removeResident = (index) => {
-    residents.splice(index, 1);
-    displayResidents();
-  };
+    window.removeResident = (index) => {
+        residents.splice(index, 1);
+        displayResidents();
+    };
 
-  // Gerenciar Quartos
-  const quartoForm = document.getElementById('quartoForm');
-  const quartosList = document.getElementById('quartosList');
-  const quartos = [];
+    // Gerenciar Quartos
+    const roomForm = document.getElementById('roomForm');
+    const roomList = document.getElementById('roomList');
+    const rooms = [];
 
-  if (quartoForm) {
-    quartoForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const nome = event.target.quartoNome.value;
-      const capacidade = event.target.quartoCapacidade.value;
-      const caracteristica = event.target.quartoCaracteristica.value;
+    if (roomForm) {
+        roomForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const name = event.target.name.value;
+            const capacity = event.target.capacity.value;
+            const type = event.target.type.value;
 
-      const quarto = { nome, capacidade, caracteristica };
-      quartos.push(quarto);
-      event.target.reset();
-      displayQuartos();
-    });
-  }
+            const room = { name, capacity, type };
+            rooms.push(room);
+            event.target.reset();
+            displayRooms();
+        });
+    }
 
-  const displayQuartos = () => {
-    quartosList.innerHTML = '';
-    quartos.forEach((quarto, index) => {
-      const quartoItem = document.createElement('div');
-      quartoItem.innerHTML = `
-        <p>${quarto.nome} - ${quarto.capacidade} pessoas (${quarto.caracteristica})</p>
-        <button onclick="editQuarto(${index})">Editar</button>
-        <button onclick="removeQuarto(${index})">Remover</button>
-      `;
-      quartosList.appendChild(quartoItem);
-    });
-  };
+    const displayRooms = () => {
+        roomList.innerHTML = '';
+        rooms.forEach((room, index) => {
+            const roomItem = document.createElement('div');
+            roomItem.innerHTML = `
+                <p>${room.name} - Capacidade: ${room.capacity} - Tipo: ${room.type}</p>
+                <button onclick="editRoom(${index})">Editar</button>
+                <button onclick="removeRoom(${index})">Remover</button>
+            `;
+            roomList.appendChild(roomItem);
+        });
+    };
 
-  window.editQuarto = (index) => {
-    const quarto = quartos[index];
-    quartoForm.quartoNome.value = quarto.nome;
-    quartoForm.quartoCapacidade.value = quarto.capacidade;
-    quartoForm.quartoCaracteristica.value = quarto.caracteristica;
-    quartos.splice(index, 1);
-    displayQuartos();
-  };
+    window.editRoom = (index) => {
+        const room = rooms[index];
+        roomForm.name.value = room.name;
+        roomForm.capacity.value = room.capacity;
+        roomForm.type.value = room.type;
+        rooms.splice(index, 1);
+        displayRooms();
+    };
 
-  window.removeQuarto = (index) => {
-    quartos.splice(index, 1);
-    displayQuartos();
-  };
+    window.removeRoom = (index) => {
+        rooms.splice(index, 1);
+        displayRooms();
+    };
 
-  // Gerenciar Contas
-  const contaForm = document.getElementById('contaForm');
-  const contasList = document.getElementById('contasList');
-  const contas = [];
+    // Gerenciar Contas
+    const accountForm = document.getElementById('accountForm');
+    const accountList = document.getElementById('accountList');
+    const accounts = [];
 
-  if (contaForm) {
-    contaForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const nome = event.target.contaNome.value;
-      const tipo = event.target.contaTipo.value;
-      const data = event.target.contaData.value;
+    if (accountForm) {
+        accountForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const name = event.target.name.value;
+            const type = event.target.type.value;
+            const date = event.target.date.value;
 
-      const conta = { nome, tipo, data };
-      contas.push(conta);
-      event.target.reset();
-      displayContas();
-    });
-  }
+            let priceInput = event.target.price; // Input para preço (Aluguel) ou valor total (Contas)
+            let price = null;
 
-  const displayContas = () => {
-    contasList.innerHTML = '';
-    contas.forEach((conta, index) => {
-      const contaItem = document.createElement('div');
-      contaItem.innerHTML = `
-        <p>${conta.nome} - ${conta.tipo} (${conta.data})</p>
-        <button onclick="editConta(${index})">Editar</button>
-        <button onclick="removeConta(${index})">Remover</button>
-      `;
-      contasList.appendChild(contaItem);
-    });
-  };
+            if (type === 'Aluguel') {
+                price = {};
+                rooms.forEach((room, index) => {
+                    const roomPrice = prompt(`Digite o preço para o quarto "${room.name}" (R$):`);
+                    price[index] = roomPrice;
+                });
+            } else {
+                price = priceInput.value;
+            }
 
-  window.editConta = (index) => {
-    const conta = contas[index];
-    contaForm.contaNome.value = conta.nome;
-    contaForm.contaTipo.value = conta.tipo;
-    contaForm.contaData.value = conta.data;
-    contas.splice(index, 1);
-    displayContas();
-  };
+            const account = { name, type, date, price };
+            accounts.push(account);
+            event.target.reset();
+            displayAccounts();
+        });
+    }
 
-  window.removeConta = (index) => {
-    contas.splice(index, 1);
-    displayContas();
-  };
+    const displayAccounts = () => {
+        accountList.innerHTML = '';
+        accounts.forEach((account, index) => {
+            const accountItem = document.createElement('div');
+            let priceDisplay = '';
+
+            if (account.type === 'Aluguel') {
+                priceDisplay += '<ul>';
+                Object.keys(account.price).forEach((key) => {
+                    priceDisplay += `<li>${rooms[key].name}: R$ ${account.price[key]}</li>`;
+                });
+                priceDisplay += '</ul>';
+            } else {
+                priceDisplay = `R$ ${account.price}`;
+            }
+
+            accountItem.innerHTML = `
+                <p>${account.name} - ${account.date} - ${priceDisplay}</p>
+                <button onclick="editAccount(${index})">Editar</button>
+                <button onclick="removeAccount(${index})">Remover</button>
+            `;
+            accountList.appendChild(accountItem);
+        });
+    };
+
+    window.editAccount = (index) => {
+        const account = accounts[index];
+        accountForm.name.value = account.name;
+        accountForm.type.value = account.type;
+        accountForm.date.value = account.date;
+
+        if (account.type === 'Aluguel') {
+            // Mostrar os preços dos quartos para edição
+            rooms.forEach((room, idx) => {
+                const roomPrice = prompt(`Digite o preço para o quarto "${room.name}" (R$):`, account.price[idx]);
+                account.price[idx] = roomPrice;
+            });
+        } else {
+            // Mostrar o preço da conta para edição
+            accountForm.price.value = account.price;
+        }
+
+        accounts.splice(index, 1);
+        displayAccounts();
+    };
+
+    window.removeAccount = (index) => {
+        accounts.splice(index, 1);
+        displayAccounts();
+    };
 });
