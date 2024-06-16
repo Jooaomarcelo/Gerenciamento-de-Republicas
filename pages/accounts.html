@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciamento de Contas</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="../index.html">Dashboard</a></li>
+      <li><a href="users.html">Usuários</a></li>
+      <li><a href="residents.html">Moradores</a></li>
+      <li><a href="rooms.html">Quartos</a></li>
+      <li><a href="accounts.html">Contas</a></li>
+    </ul>
+  </nav>
+  <main>
+    <h1>Gerenciamento de Contas</h1>
+    <form id="contaForm">
+      <label for="contaNome">Nome da Conta:</label>
+      <input type="text" id="contaNome" name="contaNome" required>
+
+      <label for="contaTipo">Tipo:</label>
+      <select id="contaTipo" name="contaTipo" required>
+        <option value="Contas">Contas</option>
+        <option value="Aluguel">Aluguel</option>
+      </select>
+
+      <label for="contaData">Data (DD/MM/AAAA):</label>
+      <input type="text" id="contaData" name="contaData" pattern="\d{2}/\d{2}/\d{4}" required>
+
+      <button type="button" onclick="adicionarConta()">Adicionar Conta</button>
+    </form>
+
+    <div id="contasList">
+      <h3>Lista de Contas</h3>
+    </div>
+  </main>
+  <script src="../js/main.js"></script>
+</body>
+</html>

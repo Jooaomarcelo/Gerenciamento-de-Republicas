@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciamento de Quartos</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="../index.html">Dashboard</a></li>
+      <li><a href="users.html">Usuários</a></li>
+      <li><a href="residents.html">Moradores</a></li>
+      <li><a href="rooms.html">Quartos</a></li>
+      <li><a href="accounts.html">Contas</a></li>
+    </ul>
+  </nav>
+  <main>
+    <h1>Gerenciamento de Quartos</h1>
+    <form id="quartoForm">
+      <label for="quartoNome">Nome do Quarto:</label>
+      <input type="text" id="quartoNome" name="quartoNome" required>
+
+      <label for="quartoCapacidade">Capacidade:</label>
+      <input type="number" id="quartoCapacidade" name="quartoCapacidade" required>
+
+      <label for="quartoCaracteristica">Característica:</label>
+      <select id="quartoCaracteristica" name="quartoCaracteristica" required>
+        <option value="Normal">Normal</option>
+        <option value="Suíte">Suíte</option>
+      </select>
+
+      <button type="button" onclick="adicionarQuarto()">Adicionar Quarto</button>
+    </form>
+
+    <div id="quartosList">
+      <h3>Lista de Quartos</h3>
+    </div>
+  </main>
+  <script src="../js/main.js"></script>
+</body>
+</html>
