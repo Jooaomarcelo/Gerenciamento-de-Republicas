@@ -101,33 +101,3 @@ form button:hover {
   background-color: #c82333;
 }
 
-/* Estilos específicos para listas de quartos e contas */
-#roomList,
-#accountList {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-}
-
-#roomList p,
-#accountList p {
-  margin-bottom: 10px;
-}
-
-#roomList button,
-#accountList button {
-  background-color: #dc3545;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 3px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#roomList button:hover,
-#accountList button:hover {
-  background-color: #c82333;
-}
