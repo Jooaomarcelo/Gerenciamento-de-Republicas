@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciamento de Usuários</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="../index.html">Dashboard</a></li>
+      <li><a href="users.html">Usuários</a></li>
+      <li><a href="residents.html">Moradores</a></li>
+    </ul>
+  </nav>
+  <main>
+    <h1>Gerenciamento de Usuários</h1>
+    <form id="userForm">
+      <label for="name">Nome:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="cpf">CPF:</label>
+      <input type="text" id="cpf" name="cpf" required>
+      <label for="rg">RG:</label>
+      <input type="text" id="rg" name="rg">
+      <label for="profile">Perfil:</label>
+      <select id="profile" name="profile" required>
+        <option value="Administrador">Administrador</option>
+        <option value="Responsável da República">Responsável da República</option>
+        <option value="Morador">Morador</option>
+      </select>
+      <button type="submit">Incluir Usuário</button>
+    </form>
+    <div id="userList"></div>
+  </main>
+  <script src="../js/main.js"></script>
+</body>
+</html>
