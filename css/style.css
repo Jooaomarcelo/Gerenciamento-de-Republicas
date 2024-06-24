@@ -74,30 +74,66 @@ form button:hover {
   background-color: #0056b3;
 }
 
-/* Estilos para listas de itens */
-.list-container {
+/* Estilos para a tabela */
+.table-container {
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
+  overflow-x: auto;
 }
 
-.list-container p {
-  margin-bottom: 10px;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
 }
 
-.list-container button {
-  background-color: #dc3545;
-  color: #fff;
-  border: none;
+table th,
+table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+table th {
+  background-color: #f2f2f2;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Estilos para botões de ação */
+.edit-btn,
+.delete-btn {
   padding: 5px 10px;
   border-radius: 3px;
+  border: none;
   cursor: pointer;
+  margin-right: 5px;
   transition: background-color 0.3s ease;
 }
 
-.list-container button:hover {
-  background-color: #c82333;
+.edit-btn {
+  background-color: #007bff;
+  color: #fff;
 }
 
+.edit-btn:hover {
+  background-color: #0056b3;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
