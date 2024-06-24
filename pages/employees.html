@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD de Empregados</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="../index.html">Dashboard</a></li>
+      <li><a href="users.html">Usuários</a></li>
+      <li><a href="residents.html">Moradores</a></li>
+      <li><a href="rooms.html">Quartos</a></li>
+      <li><a href="accounts.html">Contas</a></li>
+      <li><a href="transactions.html">Transações</a></li>
+      <li><a href="employees.html">Empregados</a></li>
+    </ul>
+  </nav>
+  <main>
+    <h1>Gerenciamento de Empregados</h1>
+
+    <!-- Formulário para inclusão e edição de empregados -->
+    <form id="employeeForm" onsubmit="return false;">
+      <h2>Incluir/Editar Empregado</h2>
+      <label for="empName">Nome*:</label>
+      <input type="text" id="empName" name="empName" required>
+
+      <label for="empCPF">CPF*:</label>
+      <input type="text" id="empCPF" name="empCPF" pattern="[0-9]{11}" required>
+      
+      <label for="empAddress">Endereço*:</label>
+      <input type="text" id="empAddress" name="empAddress" required>
+      
+      <label for="empSalary">Salário*:</label>
+      <input type="text" id="empSalary" name="empSalary" pattern="R\$[0-9]+(,[0-9]{2})?" required>
+
+      <button onclick="addOrUpdateEmployee()">Salvar</button>
+    </form>
+
+    <!-- Tabela para listar empregados -->
+    <div id="employeeList" class="table-container">
+      <h2>Lista de Empregados</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Endereço</th>
+            <th>Salário</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="employeeTableBody">
+          <!-- Linhas de dados serão adicionadas dinamicamente -->
+        </tbody>
+      </table>
+    </div>
+  </main>
+  <script src="../js/main.js"></script>
+</body>
+</html>

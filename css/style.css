@@ -137,3 +137,39 @@ table tbody tr:hover {
 .delete-btn:hover {
   background-color: #c82333;
 }
+
+/* Adicione isso ao seu arquivo CSS (style.css) ou dentro de uma tag <style> no cabeçalho do HTML */
+
+fieldset {
+  margin-bottom: 20px;
+}
+
+fieldset legend {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+fieldset table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+fieldset th, fieldset td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+fieldset th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+fieldset tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+fieldset tbody tr:hover {
+  background-color: #f1f1f1;
+}

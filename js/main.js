@@ -243,4 +243,190 @@ document.addEventListener('DOMContentLoaded', () => {
       displayAccounts();
     };
   });
+
+  // Gerencias Transações  
+  document.addEventListener('DOMContentLoaded', () => {
+    // ... Código existente para gerenciar usuários, moradores, quartos, contas ...
+
+    // Gerenciar Transações
+    const transactionForm = document.getElementById('transactionForm');
+    const transactionList = document.querySelector('#transactionList tbody');
+    const transactions = [];
+
+    if (transactionForm) {
+      transactionForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const name = event.target.name.value;
+        const price = event.target.price.value;
   
+        const pagantes = [];
+        const pagantesCheckboxes = document.querySelectorAll('#pagantesList input[type=checkbox]:checked');
+        pagantesCheckboxes.forEach(checkbox => {
+          pagantes.push(checkbox.value);
+        });
+  
+        const divisao = [];
+        const divisaoCheckboxes = document.querySelectorAll('#divisaoList input[type=checkbox]:checked');
+        divisaoCheckboxes.forEach(checkbox => {
+          divisao.push(checkbox.value);
+        });
+  
+        const transaction = { name, price, pagantes, divisao };
+        transactions.push(transaction);
+        event.target.reset();
+        displayTransactions();
+      });
+    }
+
+    const displayTransactions = () => {
+      transactionList.innerHTML = '';
+      transactions.forEach((transaction, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${transaction.name}</td>
+          <td>R$ ${transaction.price}</td>
+          <td>${transaction.pagantes.join(', ')}</td>
+          <td>${transaction.divisao.join(', ')}</td>
+          <td>
+            <button class="edit-btn" onclick="editTransaction(${index})">Editar</button>
+            <button class="delete-btn" onclick="removeTransaction(${index})">Remover</button>
+          </td>
+        `;
+        transactionList.appendChild(row);
+      });
+    };
+
+    window.editTransaction = (index) => {
+      const transaction = transactions[index];
+      transactionForm.name.value = transaction.name;
+      transactionForm.price.value = transaction.price;
+
+      // Marcar checkboxes para pagantes
+      const pagantesCheckboxes = document.querySelectorAll('#pagantesList input[type=checkbox]');
+      pagantesCheckboxes.forEach(checkbox => {
+        checkbox.checked = transaction.pagantes.includes(checkbox.value);
+      });
+
+      // Marcar checkboxes para divisão
+      const divisaoCheckboxes = document.querySelectorAll('#divisaoList input[type=checkbox]');
+      divisaoCheckboxes.forEach(checkbox => {
+        checkbox.checked = transaction.divisao.includes(checkbox.value);
+      });
+
+      transactions.splice(index, 1);
+      displayTransactions();
+    };
+
+    window.removeTransaction = (index) => {
+      transactions.splice(index, 1);
+      displayTransactions();
+    };
+
+    // Função para preencher checkboxes dinamicamente
+    const populateCheckboxes = (containerId, options) => {
+      const container = document.getElementById(containerId);
+      container.innerHTML = '';
+      options.forEach(option => {
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = option;
+        checkbox.value = option;
+        const label = document.createElement('label');
+        label.textContent = option;
+        label.setAttribute('for', option);
+        const div = document.createElement('div');
+        div.appendChild(checkbox);
+        div.appendChild(label);
+        container.appendChild(div);
+      });
+    };
+
+    // Exemplo de dados para pagantes e divisão (substitua com os dados reais do seu sistema)
+    const moradores = ['Morador1', 'Morador2', 'Morador3'];
+    populateCheckboxes('pagantesList', moradores);
+    populateCheckboxes('divisaoList', moradores);
+});
+
+// Dados iniciais de empregados (simulando um banco de dados)
+let employees = [
+  { nome: "Empregado 1", cpf: "12345678901", endereco: "Rua A, 123", salario: "R$1500,00" },
+  { nome: "Empregado 2", cpf: "98765432109", endereco: "Av. B, 456", salario: "R$1800,00" }
+];
+
+// Função para adicionar ou atualizar empregado
+function addOrUpdateEmployee() {
+  const name = document.getElementById('empName').value.trim();
+  const cpf = document.getElementById('empCPF').value.trim();
+  const address = document.getElementById('empAddress').value.trim();
+  const salary = document.getElementById('empSalary').value.trim();
+
+  if (!name || !cpf || !address || !salary) {
+    alert("Por favor, preencha todos os campos obrigatórios.");
+    return;
+  }
+
+  // Verificar se é uma atualização ou inclusão
+  const index = employees.findIndex(emp => emp.cpf === cpf);
+  if (index !== -1) {
+    // Atualizar empregado existente
+    employees[index].endereco = address;
+    employees[index].salario = salary;
+  } else {
+    // Incluir novo empregado
+    employees.push({ nome: name, cpf: cpf, endereco: address, salario: salary });
+  }
+
+  // Limpar formulário e atualizar tabela
+  document.getElementById('employeeForm').reset();
+  displayEmployees();
+}
+
+// Função para exibir empregados na tabela
+function displayEmployees() {
+  const tbody = document.getElementById('employeeTableBody');
+  tbody.innerHTML = '';
+
+  employees.forEach(emp => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${emp.nome}</td>
+      <td>${emp.cpf}</td>
+      <td>${emp.endereco}</td>
+      <td>${emp.salario}</td>
+      <td>
+        <button class="edit-btn" onclick="editEmployee('${emp.cpf}')">Editar</button>
+        <button class="delete-btn" onclick="removeEmployee('${emp.cpf}')">Remover</button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+// Função para editar empregado
+function editEmployee(cpf) {
+  const emp = employees.find(e => e.cpf === cpf);
+  if (emp) {
+    document.getElementById('empName').value = emp.nome;
+    document.getElementById('empCPF').value = emp.cpf;
+    document.getElementById('empAddress').value = emp.endereco;
+    document.getElementById('empSalary').value = emp.salario.replace("R$", "");
+
+    // Atualizar botão para modo de edição
+    const saveBtn = document.querySelector('#employeeForm button');
+    saveBtn.innerHTML = 'Atualizar';
+    saveBtn.onclick = function() {
+      addOrUpdateEmployee();
+      saveBtn.innerHTML = 'Salvar';
+      saveBtn.onclick = addOrUpdateEmployee;
+    };
+  }
+}
+
+// Função para remover empregado
+function removeEmployee(cpf) {
+  employees = employees.filter(emp => emp.cpf !== cpf);
+  displayEmployees();
+}
+
+// Exibir empregados inicialmente
+displayEmployees();
